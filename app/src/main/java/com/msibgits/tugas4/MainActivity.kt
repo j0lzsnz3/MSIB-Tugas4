@@ -14,9 +14,13 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var view: View
 
+    // Diberikan List Nama Item dengan isi "Milk Tea", "Mochachino, "V60", "Pie", "Somay Goreng".
     private val itemsName = arrayListOf("Milk Tea", "Mochachino", "V60", "Pie", "Somay Goreng")
+
+    // Diberikan List Nama Merk dengan isi "Apple", "Microsoft", "Asus", "Sony".
     private val brandName = arrayListOf("Apple", "Microsoft", "Asus", "Sony")
 
+    // func onCreate untuk melakukan inisialisasi Layout
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -25,6 +29,10 @@ class MainActivity : AppCompatActivity() {
         initView()
     }
 
+    /**
+     * @initView func digunakan untuk melakukan inisialisasi View
+     * Dipisahkan karena menerapkan prinsip SRP (Single Responsibility Principle)
+     */
     private fun initView() {
         binding.btnProcess.setOnClickListener {
             loopWithForEach()
@@ -32,6 +40,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * @loopWithForEach melakukan loop dari List itemsName menggunakan forEach { }
+     * untuk kemudian dimasukkan ke StringBuilder dan akan diprint ke console.
+     * Selanjutnya isi dari StringBuilder akan ditampilkan ke TextView tvItems.
+     */
     private fun loopWithForEach() {
         val stringBuilder = StringBuilder()
         stringBuilder.append("Hasil Item :")
@@ -42,6 +55,11 @@ class MainActivity : AppCompatActivity() {
         binding.tvItems.text = stringBuilder.toString()
     }
 
+    /**
+     * @loopWithFor() melakukan loop dari List itemsName menggunakan for ()
+     * untuk kemudian dimasukkan ke StringBuilder dan akan diprint ke console.
+     * Selanjutnya isi dari StringBuilder akan ditampilkan ke TextView tvBrand.
+     */
     private fun loopWithFor() {
         val stringBuilder = StringBuilder()
         stringBuilder.append("Hasil Merk :")
